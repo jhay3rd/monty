@@ -1,28 +1,32 @@
 #include "monty.h"
 /**
-*add_two - the function adds the two top elements of a stack
-*@stack: the stack to be added
-*@line_number: the nodes number
-*Return: void
+ * f_add - adds the two top elements of the stack.
+ * @head: head of stack 
+ * @counter: line number
+ * Return: does not return
 */
-void add_two(stack_t **stack, unsigned int line_number)
+void f_add(stack_t **head, unsigned int counter)
 {
-	int sum = 0;
-	stack_t *top = *stack, *second = NULL;
+	stack_t *h;
+	int len = 0, aux;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	h = *head;
+	while (h)
 	{
-		printf("L%u: cannot add, stack too short\n", line_number);
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	else
-	{
-		second = top->next;
-
-		sum = (top->n) + (second->n);
-		second->n = sum;
-		*stack = second;
-		free(top);
-	}
-
+	h = *head;
+	aux = h->n + h->next->n;
+	h->next->n = aux;
+	*head = h->next;
+	free(h);
 }

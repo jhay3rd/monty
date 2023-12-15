@@ -1,11 +1,9 @@
 #include "monty.h"
-
 /**
-* f_pstr - prints string from the top of the stack, followed by a new line
-* @head: head of the stack
-* @counter: line count
-*
-* Return: nothing
+ * f_pstr - prints string from top of the stack,then a new line
+ * @head: head of stack
+ * @counter: counts line number of stack
+ * Return: returns nothing
 */
 void f_pstr(stack_t **head, unsigned int counter)
 {
